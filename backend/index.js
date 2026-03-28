@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 // Simple file database
-const DB_FILE = 'database.json';
+const DB_FILE = process.env.DB_FILE || 'database.json';
 if (!fs.existsSync(DB_FILE)) {
-  fs.writeFileSync(DB_FILE, JSON.stringify({ users: [] }));
+  fs.writeFileSync(DB_FILE, JSON.stringify({ users: [], checkins: [], bookings: [] }));
 }
 
 // Helper to read database
