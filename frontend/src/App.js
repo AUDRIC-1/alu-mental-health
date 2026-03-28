@@ -14,7 +14,7 @@ function App() {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const res = await axios.post('http://localhost:5000/register', { name, email, password });
+    const res = await axios.post('https://alu-mental-health.onrender.com', { name, email, password });
     setMessage(res.data.message);
   }
 
@@ -23,7 +23,7 @@ function App() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const res = await axios.post('http://localhost:5000/login', { email, password });
+    const res = await axios.post('https://alu-mental-health.onrender.com', { email, password });
     setMessage(res.data.message);
     if (res.data.user) {
       setUserEmail(res.data.user.email);
@@ -38,7 +38,7 @@ function App() {
     const mood = e.target.mood.value;
     const feeling = e.target.feeling.value;
     const sleep = e.target.sleep.value;
-    const res = await axios.post('http://localhost:5000/checkin', { email: userEmail, mood, feeling, sleep });
+    const res = await axios.post('https://alu-mental-health.onrender.com', { email: userEmail, mood, feeling, sleep });
     setFeedback(res.data.feedback);
   }
 
@@ -47,7 +47,7 @@ function App() {
     e.preventDefault();
     const date = e.target.date.value;
     const reason = e.target.reason.value;
-    const res = await axios.post('http://localhost:5000/booking', { email: userEmail, date, reason });
+    const res = await axios.post('https://alu-mental-health.onrender.com', { email: userEmail, date, reason });
     setMessage(res.data.message);
   }
 
