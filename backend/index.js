@@ -57,6 +57,44 @@ app.post('/login', (req, res) => {
 
   res.json({ message: 'Login successful!', user: { name: user.name, email: user.email } });
 });
+// Save a mental health check-in
+app.post('/checkin', (req, res) => {
+  const { email, mood, feeling, sleep } = req.body;
+  const db = readDB();
+
+  // Add checkins array if it doesn't exist
+  if (!db.checkins) db.checkins = [];
+
+  // Save the checkin
+  db.checkins.push({ email, mood, feeling, sleep, date: new Date().toLocaleDateString() });
+  saveDB(db);
+
+  // Give feedback based on mood
+  let feedback = '';
+  if (mood <= 3) {
+    feedback = 'It seems you are having a tough time. Please consider talking to a counselor.';
+  } else if (mood <= 7) {
+    feedback = 'You are doing okay! Keep using the resources available to you.';
+  } else {
+    feedback = 'You are doing great! Keep it up! 🎉';
+  }
+
+  res.json({ message: 'Check-in saved!', feedback });
+});
+// Book a counseling session
+app.post('/booking', (req, res) => {
+  const { email, date, reason } = req.body;
+  const db = readDB();
+
+  // Add bookings array if it doesn't exist
+  if (!db.bookings) db.bookings = [];
+
+  // Save the booking
+  db.bookings.push({ email, date, reason, status: 'pending' });
+  saveDB(db);
+
+  res.json({ message: 'Session requested successfully! A counselor will get back to you.' });
+});
 
 // Start server
 app.listen(5000, () => {

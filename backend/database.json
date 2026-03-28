@@ -1,1 +1,1 @@
-{"users":[{"name":"Audric","email":"audric@alustudent.com","password":"1234"},{"name":"Audric","email":"a.mihigo1@alustudent.com","password":"12345"}]}
+{"users":[{"name":"Audric","email":"audric@alustudent.com","password":"1234"},{"name":"Audric","email":"a.mihigo1@alustudent.com","password":"12345"}],"checkins":[{"email":"a.mihigo1@alustudent.com","mood":"5","feeling":"Happy","sleep":"7","date":"3/28/2026"}],"bookings":[{"email":"a.mihigo1@alustudent.com","date":"2026-03-13","reason":"Mental health\n","status":"pending"}]}
