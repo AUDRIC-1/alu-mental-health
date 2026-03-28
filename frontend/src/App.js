@@ -57,7 +57,7 @@ function App() {
     <div style={{ fontFamily: 'Segoe UI, sans-serif', background: '#f0f4f8', minHeight: '100vh', padding: '20px' }}>
 
       {/* Header */}
-      <div style={{ background: '#4CAF50', padding: '20px', borderRadius: '10px', marginBottom: '20px', textAlign: 'center' }}>
+      <div style={{ background: '#052006', padding: '20px', borderRadius: '10px', marginBottom: '20px', textAlign: 'center' }}>
         <h1 style={{ color: 'white', margin: 0 }}>🌿 ALU Mental Health Support</h1>
         <p style={{ color: 'white', margin: '5px 0 0' }}>A safe and private space for ALU students</p>
       </div>
@@ -77,7 +77,7 @@ function App() {
 
         {/* Message */}
         {message && (
-          <p style={{ background: '#e8f5e9', color: '#2e7d32', padding: '10px', borderRadius: '5px', textAlign: 'center' }}>
+          <p style={{ background: '#e8f5e9', color: '#062108', padding: '10px', borderRadius: '5px', textAlign: 'center' }}>
             {message}
           </p>
         )}
@@ -85,8 +85,8 @@ function App() {
         {/* Home Page */}
         {page === 'home' && (
           <div style={{ textAlign: 'center' }}>
-            <h2>Welcome 👋</h2>
-            <p>This platform helps ALU students manage their mental health through check-ins, resources, peer support, and counseling connections.</p>
+            <h2>Welcome </h2>
+            <p>This platform helps ALU students manage their mental health.</p>
             <button onClick={() => setPage('register')} style={greenBtn}>Get Started</button>
           </div>
         )}
@@ -115,7 +115,7 @@ function App() {
         {/* Check-in Page */}
         {page === 'checkin' && (
           <form onSubmit={handleCheckin}>
-            <h2 style={{ textAlign: 'center' }}>Daily Check-in 🧠</h2>
+            <h2 style={{ textAlign: 'center' }}>Daily Check-in </h2>
             <p style={{ textAlign: 'center', color: '#666' }}>How are you feeling today?</p>
             <label>Mood (1-10)</label>
             <input name="mood" type="number" min="1" max="10" placeholder="Rate your mood" style={inputStyle} />
@@ -132,7 +132,7 @@ function App() {
             <input name="sleep" type="number" min="0" max="24" placeholder="Hours of sleep" style={inputStyle} />
             <button type="submit" style={greenBtn}>Submit Check-in</button>
             {feedback && (
-              <p style={{ background: '#e8f5e9', color: '#2e7d32', padding: '10px', borderRadius: '5px', marginTop: '15px', textAlign: 'center' }}>
+              <p style={{ background: '#e8f5e9', color: '#062007', padding: '10px', borderRadius: '5px', marginTop: '15px', textAlign: 'center' }}>
                 {feedback}
               </p>
             )}
@@ -142,7 +142,7 @@ function App() {
         {/* Resources Page */}
         {page === 'resources' && (
           <div>
-            <h2 style={{ textAlign: 'center' }}>📚 Self-Help Resources</h2>
+            <h2 style={{ textAlign: 'center' }}> Self-Help Resources</h2>
             <p style={{ color: '#666', textAlign: 'center' }}>Helpful articles and videos for your wellbeing</p>
             {[
               { title: 'How to manage stress as a student', link: 'https://www.mind.org.uk/information-support/types-of-mental-health-problems/stress/' },
@@ -152,7 +152,7 @@ function App() {
               { title: 'How to talk about mental health', link: 'https://www.mentalhealth.org.uk/explore-mental-health/a-z-topics/talking-about-mental-health' },
             ].map((item, i) => (
               <div key={i} style={{ background: '#f0f4f8', borderRadius: '8px', padding: '15px', marginBottom: '10px' }}>
-                <a href={item.link} target="_blank" rel="noreferrer" style={{ color: '#4CAF50', fontWeight: 'bold', textDecoration: 'none' }}>
+                <a href={item.link} target="_blank" rel="noreferrer" style={{ color: '#09250A', fontWeight: 'bold', textDecoration: 'none' }}>
                   📖 {item.title}
                 </a>
               </div>
@@ -163,7 +163,7 @@ function App() {
         {/* Booking Page */}
         {page === 'booking' && (
           <form onSubmit={handleBooking}>
-            <h2 style={{ textAlign: 'center' }}>📅 Book a Counselor</h2>
+            <h2 style={{ textAlign: 'center' }}> Book a Counselor</h2>
             <p style={{ textAlign: 'center', color: '#666' }}>Request a session with an ALU counselor</p>
             <label>Preferred Date</label>
             <input name="date" type="date" style={inputStyle} />
@@ -181,17 +181,17 @@ function App() {
 const navBtn = {
   padding: '10px 20px',
   background: 'white',
-  border: '2px solid #4CAF50',
+  border: '2px solid #052106',
   borderRadius: '5px',
   cursor: 'pointer',
-  color: '#4CAF50',
+  color: '#051E05',
   fontWeight: 'bold'
 };
 
 const greenBtn = {
   width: '100%',
   padding: '12px',
-  background: '#4CAF50',
+  background: '#052006',
   color: 'white',
   border: 'none',
   borderRadius: '5px',
