@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API = 'https://alu-mental-health.onrender.com';
+
 function App() {
   const [page, setPage] = useState('home');
   const [message, setMessage] = useState('');
@@ -14,7 +16,7 @@ function App() {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const res = await axios.post('https://alu-mental-health.onrender.com', { name, email, password });
+    const res = await axios.post(`${API}/register`, { name, email, password });
     setMessage(res.data.message);
   }
 
@@ -23,7 +25,7 @@ function App() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const res = await axios.post('https://alu-mental-health.onrender.com', { email, password });
+    const res = await axios.post(`${API}/login`, { email, password });
     setMessage(res.data.message);
     if (res.data.user) {
       setUserEmail(res.data.user.email);
@@ -38,7 +40,7 @@ function App() {
     const mood = e.target.mood.value;
     const feeling = e.target.feeling.value;
     const sleep = e.target.sleep.value;
-    const res = await axios.post('https://alu-mental-health.onrender.com', { email: userEmail, mood, feeling, sleep });
+    const res = await axios.post(`${API}/checkin`, { email: userEmail, mood, feeling, sleep });
     setFeedback(res.data.feedback);
   }
 
@@ -47,7 +49,7 @@ function App() {
     e.preventDefault();
     const date = e.target.date.value;
     const reason = e.target.reason.value;
-    const res = await axios.post('https://alu-mental-health.onrender.com', { email: userEmail, date, reason });
+    const res = await axios.post(`${API}/booking`, { email: userEmail, date, reason });
     setMessage(res.data.message);
   }
 
@@ -115,10 +117,8 @@ function App() {
           <form onSubmit={handleCheckin}>
             <h2 style={{ textAlign: 'center' }}>Daily Check-in 🧠</h2>
             <p style={{ textAlign: 'center', color: '#666' }}>How are you feeling today?</p>
-
             <label>Mood (1-10)</label>
             <input name="mood" type="number" min="1" max="10" placeholder="Rate your mood" style={inputStyle} />
-
             <label>How are you feeling?</label>
             <select name="feeling" style={inputStyle}>
               <option>Happy</option>
@@ -128,12 +128,9 @@ function App() {
               <option>Tired</option>
               <option>Okay</option>
             </select>
-
             <label>Hours of sleep last night</label>
             <input name="sleep" type="number" min="0" max="24" placeholder="Hours of sleep" style={inputStyle} />
-
             <button type="submit" style={greenBtn}>Submit Check-in</button>
-
             {feedback && (
               <p style={{ background: '#e8f5e9', color: '#2e7d32', padding: '10px', borderRadius: '5px', marginTop: '15px', textAlign: 'center' }}>
                 {feedback}
@@ -147,7 +144,6 @@ function App() {
           <div>
             <h2 style={{ textAlign: 'center' }}>📚 Self-Help Resources</h2>
             <p style={{ color: '#666', textAlign: 'center' }}>Helpful articles and videos for your wellbeing</p>
-
             {[
               { title: 'How to manage stress as a student', link: 'https://www.mind.org.uk/information-support/types-of-mental-health-problems/stress/' },
               { title: 'Understanding anxiety and how to cope', link: 'https://www.helpguide.org/articles/anxiety/anxiety-disorders-and-anxiety-attacks.htm' },
@@ -169,13 +165,10 @@ function App() {
           <form onSubmit={handleBooking}>
             <h2 style={{ textAlign: 'center' }}>📅 Book a Counselor</h2>
             <p style={{ textAlign: 'center', color: '#666' }}>Request a session with an ALU counselor</p>
-
             <label>Preferred Date</label>
             <input name="date" type="date" style={inputStyle} />
-
             <label>Reason for booking</label>
             <textarea name="reason" placeholder="Briefly describe what you would like to talk about" style={{ ...inputStyle, height: '100px' }} />
-
             <button type="submit" style={greenBtn}>Request Session</button>
           </form>
         )}
@@ -185,7 +178,6 @@ function App() {
   );
 }
 
-// Styles
 const navBtn = {
   padding: '10px 20px',
   background: 'white',
